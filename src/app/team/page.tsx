@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Our Team | BK Pilates Raleigh",
@@ -12,13 +13,14 @@ export default function TeamPage() {
       {/* Hero */}
       <section className="relative py-32 bg-secondary overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-secondary/90 z-10" />
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1920&q=80')",
-          }}
-        />
+        <div className="absolute inset-0 opacity-30">
+          <Image
+            src="/hero3.png"
+            alt="BK Pilates Team"
+            fill
+            className="object-cover"
+          />
+        </div>
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
             The People Behind BK
@@ -41,18 +43,23 @@ export default function TeamPage() {
             </h2>
           </div>
 
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-muted text-lg leading-relaxed mb-6">
-              Marina and Julia met over a decade ago when Julia took classes at a
-              BK Pilates NYC location where Marina was instructing. What started
-              as an instructor-student relationship quickly evolved into a deep
-              friendship.
+          <div className="max-w-3xl mx-auto space-y-6">
+            <p className="text-muted text-lg leading-relaxed">
+              Julia first met Marina a decade ago while taking classes at a BK
+              Pilates NYC studio. Their instructor-student relationship
+              developed into a friendship.
             </p>
             <p className="text-muted text-lg leading-relaxed">
-              During their time in New York, they often talked about opening a
-              studio together. Years later, when Julia relocated to Raleigh, she
-              took Marina up on the offer. Together they launched BK Pilates
-              Raleigh to bring mind-body connection to the Triangle community.
+              During their time in NYC, the two frequently dreamed and talked
+              about &ldquo;when they left NYC...&rdquo; and Marina said
+              &ldquo;when you move back to Raleigh, let&apos;s open a BK Pilates
+              studio!&rdquo;
+            </p>
+            <p className="text-muted text-lg leading-relaxed">
+              Years and many cities later, Julia took Marina up on the offer
+              when she moved back to Raleigh a few years ago. They are thrilled
+              to bring mind-body connection to Raleigh at their first location
+              in Rockway.
             </p>
           </div>
         </div>
@@ -64,11 +71,12 @@ export default function TeamPage() {
           <div className="grid md:grid-cols-2 gap-16">
             {/* Marina */}
             <div className="group">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-8 shadow-lg">
-                <img
-                  src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80"
+              <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-8 shadow-lg relative">
+                <Image
+                  src="/Marina.png"
                   alt="Marina Kaydanova - Founder"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div>
@@ -78,23 +86,26 @@ export default function TeamPage() {
                 <h3 className="text-2xl font-bold text-secondary mb-4">
                   Marina Kaydanova
                 </h3>
-                <p className="text-muted leading-relaxed">
+                <p className="text-muted leading-relaxed mb-4">
                   After falling in love with pilates through classes and
-                  workshops, Marina left the corporate world to pursue her
-                  passion. She opened the first BK Pilates studio in Brooklyn,
-                  NY in 2012 and now teaches full-time, bringing her deep
-                  expertise and infectious energy to every session.
+                  workshops, Marina left the corporate world.
+                </p>
+                <p className="text-muted leading-relaxed">
+                  She opened the first BK Pilates studio in Brooklyn, NY in
+                  2012. Today, she is able to pursue her passion full time,
+                  teaching the life-changing practice of pilates.
                 </p>
               </div>
             </div>
 
             {/* Julia */}
             <div className="group">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-8 shadow-lg">
-                <img
-                  src="https://images.unsplash.com/photo-1609592806596-89c4ea3104ea?w=600&q=80"
+              <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-8 shadow-lg relative">
+                <Image
+                  src="/julia.png"
                   alt="Julia Davis - Co-Founder"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div>
@@ -110,9 +121,7 @@ export default function TeamPage() {
                   successful career in real estate and hospitality.
                 </p>
                 <p className="text-muted leading-relaxed">
-                  She holds BASI Mat and Balanced Body Mat + Reformer
-                  certifications, bringing a well-rounded and knowledgeable
-                  approach to every class.
+                  Julia is BASI Mat and Balanced Body Mat + Reformer certified.
                 </p>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -38,15 +39,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">BK</span>
-              </div>
-              <div>
-                <span className="text-xl font-bold">BK Pilates</span>
-                <span className="block text-[10px] uppercase tracking-[0.2em] text-gray-400">
-                  Raleigh
-                </span>
-              </div>
+              <Image
+                src="/logo-footer.png"
+                alt="BK Pilates Raleigh"
+                width={120}
+                height={60}
+                className="object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Bringing mind-body connection to the Raleigh community through
@@ -105,7 +104,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social & Newsletter */}
+          {/* Social */}
           <div>
             <h3 className="font-semibold text-sm uppercase tracking-wider mb-4 text-primary">
               Stay Connected

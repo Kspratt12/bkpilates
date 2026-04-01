@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 const navLinks = [
@@ -22,9 +23,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">BK</span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="BK Pilates Raleigh"
+              width={40}
+              height={40}
+              className="w-10 h-10 object-contain"
+            />
             <div className="flex flex-col">
               <span className="text-xl font-bold tracking-tight text-secondary">
                 BK Pilates
