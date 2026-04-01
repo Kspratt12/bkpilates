@@ -44,7 +44,7 @@ export default function Footer() {
                 alt="BK Pilates Raleigh"
                 width={120}
                 height={60}
-                className="object-contain brightness-0 invert"
+                className="object-contain"
               />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">

@@ -3,7 +3,6 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Chatbox from "@/components/Chatbox";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,6 +15,10 @@ export const metadata: Metadata = {
     "BK Pilates Raleigh brings mind-body connection to the Raleigh community. Group classes, private sessions, and a welcoming space for all levels.",
   keywords:
     "pilates, raleigh, pilates studio, reformer pilates, group classes, private sessions, wellness, mindfulness",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +32,6 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1 pt-20">{children}</main>
         <Footer />
-        <Chatbox />
       </body>
     </html>
   );

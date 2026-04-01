@@ -1,54 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import HeroCarousel from "@/components/HeroCarousel";
 
 export default function Home() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-secondary overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10" />
-        <div className="absolute inset-0">
-          <Image
-            src="/hero.png"
-            alt="BK Pilates Raleigh Studio"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          <div className="max-w-2xl">
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4 animate-fade-in-up">
-              Welcome to BK Pilates Raleigh
-            </p>
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up animation-delay-200">
-              Move with
-              <br />
-              <span className="text-primary">intention.</span>
-            </h1>
-            <p className="text-lg text-gray-300 mb-10 max-w-lg animate-fade-in-up animation-delay-400 leading-relaxed">
-              Bringing mind-body connection to the Raleigh community through
-              wellness, mindfulness, and stress relief.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-600">
-              <a
-                href="https://clients.mindbodyonline.com/classic/ws?studioid=5741803"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold text-center transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
-              >
-                Book a Class
-              </a>
-              <Link
-                href="/pricing"
-                className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-center hover:bg-white/10 transition-all duration-200"
-              >
-                View Pricing
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Carousel */}
+      <HeroCarousel />
 
       {/* Philosophy Section */}
       <section className="py-24 bg-background">
@@ -150,9 +108,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Scrolling Vertical Image Gallery */}
-      <section className="py-16 bg-secondary overflow-hidden">
-        <div className="text-center mb-12">
+      {/* Scrolling Vertical Image Gallery - less padding, more photo */}
+      <section className="py-12 bg-secondary overflow-hidden">
+        <div className="text-center mb-8">
           <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
             Life at the Studio
           </p>
@@ -162,34 +120,34 @@ export default function Home() {
         </div>
         <div className="relative">
           {/* Row 1 - scrolls left */}
-          <div className="flex gap-4 mb-4 animate-marquee-left">
+          <div className="flex gap-2 mb-2 animate-marquee-left">
             {[1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8].map((num, i) => (
               <div
                 key={`row1-${i}`}
-                className="flex-shrink-0 w-[200px] h-[280px] rounded-xl overflow-hidden"
+                className="flex-shrink-0 w-[220px] h-[300px] rounded-lg overflow-hidden"
               >
                 <Image
                   src={`/vertical${num}.png`}
                   alt={`Studio photo ${num}`}
-                  width={200}
-                  height={280}
+                  width={220}
+                  height={300}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
             ))}
           </div>
           {/* Row 2 - scrolls right */}
-          <div className="flex gap-4 animate-marquee-right">
+          <div className="flex gap-2 animate-marquee-right">
             {[9, 10, 11, 12, 13, 14, 15, 9, 10, 11, 12, 13, 14, 15].map((num, i) => (
               <div
                 key={`row2-${i}`}
-                className="flex-shrink-0 w-[200px] h-[280px] rounded-xl overflow-hidden"
+                className="flex-shrink-0 w-[220px] h-[300px] rounded-lg overflow-hidden"
               >
                 <Image
                   src={`/vertical${num}.png`}
                   alt={`Studio photo ${num}`}
-                  width={200}
-                  height={280}
+                  width={220}
+                  height={300}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>

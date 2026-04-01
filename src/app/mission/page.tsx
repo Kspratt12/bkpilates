@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -10,16 +11,17 @@ export const metadata: Metadata = {
 export default function MissionPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero - use actual studio image */}
       <section className="relative py-32 bg-secondary overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-secondary/90 z-10" />
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=1920&q=80')",
-          }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-secondary/80 z-10" />
+        <div className="absolute inset-0 opacity-40">
+          <Image
+            src="/hero2.png"
+            alt="BK Pilates Mission"
+            fill
+            className="object-cover"
+          />
+        </div>
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
             What Drives Us
@@ -30,7 +32,7 @@ export default function MissionPage() {
         </div>
       </section>
 
-      {/* Mission Statement */}
+      {/* Mission Statement - big centered quote style */}
       <section className="py-24 bg-background">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <div className="w-16 h-0.5 bg-primary mx-auto mb-8" />
@@ -46,9 +48,9 @@ export default function MissionPage() {
         </div>
       </section>
 
-      {/* Values Grid */}
+      {/* Values - alternating left/right layout */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
               What We Believe
@@ -58,7 +60,7 @@ export default function MissionPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 title: "Body Positivity",
@@ -99,11 +101,11 @@ export default function MissionPage() {
             ].map((value) => (
               <div
                 key={value.title}
-                className="bg-background rounded-2xl p-8 border border-gray-100 hover:shadow-lg transition-all duration-300"
+                className="bg-background rounded-2xl p-8 border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-5">
+                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-5">
                   <svg
-                    className="w-6 h-6"
+                    className="w-7 h-7"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -147,17 +149,17 @@ export default function MissionPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-accent">
+      <section className="py-20 bg-primary">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Experience Our Values in Action
           </h2>
-          <p className="text-muted text-lg mb-8">
+          <p className="text-white/80 text-lg mb-8">
             Join our community and see what mindful movement can do for you.
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold transition-all duration-200 hover:shadow-xl"
+            className="inline-block bg-white text-primary-dark px-8 py-4 rounded-full font-semibold transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
           >
             Get Started Today
           </Link>
