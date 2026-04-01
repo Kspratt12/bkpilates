@@ -32,6 +32,9 @@ export default function HeroCarousel() {
             fill
             className="object-cover"
             priority={i === 0}
+            quality={100}
+            sizes="100vw"
+            unoptimized
           />
         </div>
       ))}

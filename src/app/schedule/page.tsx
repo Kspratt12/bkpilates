@@ -1,36 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 
-const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const SHORT_DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
 
-const SCHEDULE: Record<string, { time: string; name: string; instructor: string; spots?: string }[]> = {
-  Monday: [
-    { time: "6:00 AM", name: "Group Reformer", instructor: "Marina", spots: "3 left" },
+interface ClassSlot {
+  time: string;
+  name: string;
+  instructor: string;
+}
+
+// Classes by day of week (0=Sunday, 1=Monday, etc.)
+const WEEKLY_CLASSES: Record<number, ClassSlot[]> = {
+  0: [ // Sunday
     { time: "9:00 AM", name: "Group Reformer", instructor: "Julia" },
     { time: "10:15 AM", name: "Group Reformer", instructor: "Marina" },
-    { time: "12:00 PM", name: "Group Reformer", instructor: "Julia" },
-    { time: "5:30 PM", name: "Group Reformer", instructor: "Marina", spots: "2 left" },
-    { time: "6:45 PM", name: "Group Reformer", instructor: "Julia" },
   ],
-  Tuesday: [
-    { time: "6:00 AM", name: "Group Reformer", instructor: "Julia" },
-    { time: "9:00 AM", name: "Group Reformer", instructor: "Marina" },
-    { time: "10:15 AM", name: "Group Reformer", instructor: "Julia" },
-    { time: "12:00 PM", name: "Group Reformer", instructor: "Marina" },
-    { time: "5:30 PM", name: "Group Reformer", instructor: "Julia", spots: "4 left" },
-    { time: "6:45 PM", name: "Group Reformer", instructor: "Marina" },
-  ],
-  Wednesday: [
+  1: [ // Monday
     { time: "6:00 AM", name: "Group Reformer", instructor: "Marina" },
     { time: "9:00 AM", name: "Group Reformer", instructor: "Julia" },
     { time: "10:15 AM", name: "Group Reformer", instructor: "Marina" },
     { time: "12:00 PM", name: "Group Reformer", instructor: "Julia" },
     { time: "5:30 PM", name: "Group Reformer", instructor: "Marina" },
-    { time: "6:45 PM", name: "Group Reformer", instructor: "Julia", spots: "5 left" },
+    { time: "6:45 PM", name: "Group Reformer", instructor: "Julia" },
   ],
-  Thursday: [
+  2: [ // Tuesday
     { time: "6:00 AM", name: "Group Reformer", instructor: "Julia" },
     { time: "9:00 AM", name: "Group Reformer", instructor: "Marina" },
     { time: "10:15 AM", name: "Group Reformer", instructor: "Julia" },
@@ -38,30 +38,78 @@ const SCHEDULE: Record<string, { time: string; name: string; instructor: string;
     { time: "5:30 PM", name: "Group Reformer", instructor: "Julia" },
     { time: "6:45 PM", name: "Group Reformer", instructor: "Marina" },
   ],
-  Friday: [
+  3: [ // Wednesday
+    { time: "6:00 AM", name: "Group Reformer", instructor: "Marina" },
+    { time: "9:00 AM", name: "Group Reformer", instructor: "Julia" },
+    { time: "10:15 AM", name: "Group Reformer", instructor: "Marina" },
+    { time: "12:00 PM", name: "Group Reformer", instructor: "Julia" },
+    { time: "5:30 PM", name: "Group Reformer", instructor: "Marina" },
+    { time: "6:45 PM", name: "Group Reformer", instructor: "Julia" },
+  ],
+  4: [ // Thursday
+    { time: "6:00 AM", name: "Group Reformer", instructor: "Julia" },
+    { time: "9:00 AM", name: "Group Reformer", instructor: "Marina" },
+    { time: "10:15 AM", name: "Group Reformer", instructor: "Julia" },
+    { time: "12:00 PM", name: "Group Reformer", instructor: "Marina" },
+    { time: "5:30 PM", name: "Group Reformer", instructor: "Julia" },
+    { time: "6:45 PM", name: "Group Reformer", instructor: "Marina" },
+  ],
+  5: [ // Friday
     { time: "6:00 AM", name: "Group Reformer", instructor: "Marina" },
     { time: "9:00 AM", name: "Group Reformer", instructor: "Julia" },
     { time: "10:15 AM", name: "Group Reformer", instructor: "Marina" },
     { time: "12:00 PM", name: "Group Reformer", instructor: "Julia" },
     { time: "5:30 PM", name: "Group Reformer", instructor: "Marina" },
   ],
-  Saturday: [
+  6: [ // Saturday
     { time: "8:00 AM", name: "Group Reformer", instructor: "Marina" },
     { time: "9:15 AM", name: "Group Reformer", instructor: "Julia" },
     { time: "10:30 AM", name: "Group Reformer", instructor: "Marina" },
   ],
-  Sunday: [
-    { time: "9:00 AM", name: "Group Reformer", instructor: "Julia" },
-    { time: "10:15 AM", name: "Group Reformer", instructor: "Marina" },
-  ],
 };
 
-export default function SchedulePage() {
-  const [selectedDay, setSelectedDay] = useState(
-    DAYS[new Date().getDay() === 0 ? 6 : new Date().getDay() - 1]
-  );
+function getWeekDates(baseDate: Date): Date[] {
+  const dates: Date[] = [];
+  const day = baseDate.getDay();
+  const monday = new Date(baseDate);
+  monday.setDate(baseDate.getDate() - ((day + 6) % 7));
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    dates.push(d);
+  }
+  return dates;
+}
 
-  const classes = SCHEDULE[selectedDay] || [];
+function isSameDay(a: Date, b: Date) {
+  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+}
+
+function isToday(d: Date) {
+  return isSameDay(d, new Date());
+}
+
+export default function SchedulePage() {
+  const [weekOffset, setWeekOffset] = useState(0);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const baseDate = useMemo(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + weekOffset * 7);
+    return d;
+  }, [weekOffset]);
+
+  const weekDates = useMemo(() => getWeekDates(baseDate), [baseDate]);
+  const classes = WEEKLY_CLASSES[selectedDate.getDay()] || [];
+
+  const weekLabel = useMemo(() => {
+    const start = weekDates[0];
+    const end = weekDates[6];
+    if (start.getMonth() === end.getMonth()) {
+      return `${MONTH_NAMES[start.getMonth()]} ${start.getDate()} - ${end.getDate()}, ${start.getFullYear()}`;
+    }
+    return `${MONTH_NAMES[start.getMonth()]} ${start.getDate()} - ${MONTH_NAMES[end.getMonth()]} ${end.getDate()}, ${end.getFullYear()}`;
+  }, [weekDates]);
 
   return (
     <>
@@ -79,56 +127,108 @@ export default function SchedulePage() {
             Class Schedule
           </h1>
           <p className="text-gray-400 max-w-xl mx-auto">
-            View available classes and book your spot directly. Classes fill up quickly!
+            Pick a date on the calendar to see classes. Book your spot directly!
           </p>
         </div>
       </section>
 
-      {/* Full Calendar Schedule */}
+      {/* Calendar + Schedule */}
       <section className="py-16 bg-background">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          {/* Day Tabs */}
-          <div className="flex overflow-x-auto gap-2 mb-8 pb-2">
-            {DAYS.map((day) => (
-              <button
-                key={day}
-                onClick={() => setSelectedDay(day)}
-                className={`flex-shrink-0 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-200 ${
-                  selectedDay === day
-                    ? "bg-primary text-white shadow-lg"
-                    : "bg-white text-muted border border-gray-200 hover:border-primary hover:text-primary"
-                }`}
-              >
-                {day}
-              </button>
-            ))}
+          {/* Week Navigation */}
+          <div className="flex items-center justify-between mb-6">
+            <button
+              onClick={() => setWeekOffset((w) => w - 1)}
+              className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <div className="text-center">
+              <h2 className="text-xl font-bold text-secondary">{weekLabel}</h2>
+              {weekOffset !== 0 && (
+                <button
+                  onClick={() => { setWeekOffset(0); setSelectedDate(new Date()); }}
+                  className="text-xs text-primary font-medium mt-1 hover:underline"
+                >
+                  Back to today
+                </button>
+              )}
+            </div>
+            <button
+              onClick={() => setWeekOffset((w) => w + 1)}
+              className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
 
-          {/* Classes List */}
+          {/* Calendar Grid */}
+          <div className="grid grid-cols-7 gap-2 mb-8">
+            {weekDates.map((date, i) => {
+              const selected = isSameDay(date, selectedDate);
+              const today = isToday(date);
+              const dayClasses = WEEKLY_CLASSES[date.getDay()] || [];
+              return (
+                <button
+                  key={i}
+                  onClick={() => setSelectedDate(new Date(date))}
+                  className={`relative rounded-2xl p-4 text-center transition-all duration-200 ${
+                    selected
+                      ? "bg-primary text-white shadow-lg scale-105"
+                      : today
+                        ? "bg-white border-2 border-primary text-secondary"
+                        : "bg-white border border-gray-100 text-secondary hover:border-primary/50"
+                  }`}
+                >
+                  <p className={`text-xs font-medium uppercase tracking-wider mb-1 ${
+                    selected ? "text-white/80" : "text-muted"
+                  }`}>
+                    {SHORT_DAYS[date.getDay()]}
+                  </p>
+                  <p className={`text-2xl font-bold mb-1 ${selected ? "text-white" : ""}`}>
+                    {date.getDate()}
+                  </p>
+                  <p className={`text-[10px] ${selected ? "text-white/70" : "text-muted"}`}>
+                    {dayClasses.length} classes
+                  </p>
+                  {today && !selected && (
+                    <div className="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Selected Day Classes */}
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div className="px-6 py-4 bg-secondary text-white flex items-center justify-between">
-              <h2 className="font-bold text-lg">{selectedDay}</h2>
+              <h2 className="font-bold text-lg">
+                {DAY_NAMES[selectedDate.getDay()]}, {MONTH_NAMES[selectedDate.getMonth()]} {selectedDate.getDate()}
+              </h2>
               <span className="text-sm text-gray-400">{classes.length} classes</span>
             </div>
             <div className="divide-y divide-gray-100">
-              {classes.map((cls, i) => (
-                <div key={i} className="flex items-center justify-between px-6 py-5 hover:bg-background transition-colors">
-                  <div className="flex items-center gap-5">
-                    <div className="w-20 text-right">
-                      <p className="font-bold text-secondary text-sm">{cls.time}</p>
+              {classes.length === 0 ? (
+                <div className="px-6 py-12 text-center">
+                  <p className="text-muted">No classes scheduled for this day.</p>
+                </div>
+              ) : (
+                classes.map((cls, i) => (
+                  <div key={i} className="flex items-center justify-between px-6 py-5 hover:bg-background transition-colors">
+                    <div className="flex items-center gap-5">
+                      <div className="w-20 text-right">
+                        <p className="font-bold text-secondary text-sm">{cls.time}</p>
+                      </div>
+                      <div className="w-px h-10 bg-primary/30" />
+                      <div>
+                        <p className="font-semibold text-secondary">{cls.name}</p>
+                        <p className="text-sm text-muted">with {cls.instructor}</p>
+                      </div>
                     </div>
-                    <div className="w-px h-10 bg-primary/30" />
-                    <div>
-                      <p className="font-semibold text-secondary">{cls.name}</p>
-                      <p className="text-sm text-muted">with {cls.instructor}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    {cls.spots && (
-                      <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                        {cls.spots}
-                      </span>
-                    )}
                     <a
                       href="https://clients.mindbodyonline.com/classic/ws?studioid=5741803"
                       target="_blank"
@@ -138,8 +238,8 @@ export default function SchedulePage() {
                       Book
                     </a>
                   </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
 
@@ -164,7 +264,6 @@ export default function SchedulePage() {
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Class Types */}
             <div>
               <h2 className="text-2xl font-bold text-secondary mb-6">Class Types</h2>
               <div className="space-y-4">
@@ -183,8 +282,6 @@ export default function SchedulePage() {
                 ))}
               </div>
             </div>
-
-            {/* Tips */}
             <div>
               <h2 className="text-2xl font-bold text-secondary mb-6">Before Your First Class</h2>
               <div className="space-y-4">
