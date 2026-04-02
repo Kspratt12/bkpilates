@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
-import PromoBanner from "@/components/PromoBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -90,9 +89,8 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans">
-        <PromoBanner />
         <Navbar />
-        <main className="flex-1 pt-20">{children}</main>
+        <main className="flex-1 pt-28">{children}</main>
         <Footer />
         <Chatbot />
       </body>

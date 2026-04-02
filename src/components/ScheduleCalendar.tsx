@@ -180,26 +180,33 @@ export default function ScheduleCalendar() {
       </div>
 
       {/* Selected Day Classes */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="px-6 py-4 bg-secondary text-white flex items-center justify-between">
-          <h3 className="font-bold text-lg">
-            {DAY_NAMES[selectedDate.getDay()]}, {MONTH_NAMES[selectedDate.getMonth()]} {selectedDate.getDate()}
-          </h3>
-          <span className="text-sm text-gray-400">{classes.length} classes</span>
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-lg overflow-hidden">
+        <div className="px-6 py-5 bg-gradient-to-r from-secondary to-secondary/90 text-white flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center">
+              <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-lg">
+              {DAY_NAMES[selectedDate.getDay()]}, {MONTH_NAMES[selectedDate.getMonth()]} {selectedDate.getDate()}
+            </h3>
+          </div>
+          <span className="text-sm bg-white/10 px-3 py-1 rounded-full">{classes.length} classes</span>
         </div>
-        <div className="divide-y divide-gray-100">
+        <div className="divide-y divide-gray-50">
           {classes.length === 0 ? (
             <div className="px-6 py-12 text-center">
               <p className="text-muted">No classes scheduled for this day.</p>
             </div>
           ) : (
             classes.map((cls, i) => (
-              <div key={i} className="flex items-center justify-between px-6 py-5 hover:bg-background transition-colors">
-                <div className="flex items-center gap-5">
-                  <div className="w-20 text-right">
+              <div key={i} className="flex items-center justify-between px-6 py-4 hover:bg-primary/5 transition-colors group">
+                <div className="flex items-center gap-4">
+                  <div className="w-20 text-center bg-background group-hover:bg-primary/10 rounded-xl py-2 transition-colors">
                     <p className="font-bold text-secondary text-sm">{cls.time}</p>
                   </div>
-                  <div className="w-px h-10 bg-primary/30" />
+                  <div className="w-1 h-8 bg-primary/20 rounded-full group-hover:bg-primary/40 transition-colors" />
                   <div>
                     <p className="font-semibold text-secondary">{cls.name}</p>
                     <p className="text-sm text-muted">with {cls.instructor}</p>

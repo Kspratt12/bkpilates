@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 const heroImages = ["/1st.png", "/mainhero2.png", "/mainhero3.png"];
@@ -18,7 +17,7 @@ export default function HeroCarousel() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center bg-secondary overflow-hidden">
-      {/* Background Images */}
+      {/* Background Images - raw img tags, zero compression */}
       {heroImages.map((src, i) => (
         <div
           key={src}
@@ -26,14 +25,14 @@ export default function HeroCarousel() {
             i === current ? "opacity-100" : "opacity-0"
           }`}
         >
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={src}
             alt={`BK Pilates Raleigh Studio ${i + 1}`}
-            fill
-            className="object-cover"
-            priority
-            quality={100}
-            sizes="100vw"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding={i === 0 ? "sync" : "async"}
+            fetchPriority={i === 0 ? "high" : "auto"}
           />
         </div>
       ))}

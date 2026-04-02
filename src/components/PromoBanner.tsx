@@ -8,7 +8,7 @@ export default function PromoBanner() {
   if (!visible) return null;
 
   return (
-    <div className="bg-secondary text-white text-center py-2.5 px-4 text-sm relative z-[60]">
+    <div id="promo-banner" className="bg-secondary text-white text-center py-2 px-4 text-xs sm:text-sm relative">
       <span className="text-gray-300">New Client Special:</span>{" "}
       <span className="font-semibold">First Class Just $29</span>
       <span className="hidden sm:inline text-gray-400"> - No commitment, no pressure</span>
@@ -16,7 +16,7 @@ export default function PromoBanner() {
         href="https://clients.mindbodyonline.com/classic/ws?studioid=5741803"
         target="_blank"
         rel="noopener noreferrer"
-        className="ml-3 text-primary font-semibold hover:underline"
+        className="ml-2 text-primary font-semibold hover:underline"
       >
         Book Now
       </a>
@@ -25,7 +25,7 @@ export default function PromoBanner() {
         className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
         aria-label="Dismiss"
       >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
