@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const heroImages = ["/mainhero2.webp", "/mainhero3.webp", "/1st.webp"];
+const heroImages = ["/mainhero3.webp", "/mainhero2.webp", "/1st.webp"];
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);

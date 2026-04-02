@@ -216,7 +216,7 @@ export default function ScheduleCalendar() {
                   href="https://clients.mindbodyonline.com/classic/ws?studioid=5741803"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:shadow-md"
+                  className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:shadow-md self-center sm:self-auto w-fit"
                 >
                   Book
                 </a>
