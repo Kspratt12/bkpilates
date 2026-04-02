@@ -55,16 +55,19 @@ export default function PricingPage() {
                 { label: "10 Class Pack", price: "$330", per: "$33/class", best: true },
                 { label: "20 Class Pack", price: "$600", per: "$30/class" },
               ].map((p, i) => (
-                <div key={p.label} className={`flex items-center justify-between px-6 py-5 ${i > 0 ? "border-t border-gray-100" : ""} ${p.best ? "bg-primary/5" : ""}`}>
-                  <div>
-                    <p className="font-semibold text-secondary">{p.label}</p>
-                    <p className="text-sm text-muted">{p.per}</p>
+                <div key={p.label} className={`flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 py-4 sm:py-5 gap-3 sm:gap-0 ${i > 0 ? "border-t border-gray-100" : ""} ${p.best ? "bg-primary/5" : ""}`}>
+                  <div className="flex items-center justify-between sm:block">
+                    <div>
+                      <p className="font-semibold text-secondary">{p.label}</p>
+                      <p className="text-sm text-muted">{p.per}</p>
+                    </div>
+                    {p.best && <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full sm:hidden">Best Value</span>}
                   </div>
-                  <div className="flex items-center gap-4">
-                    {p.best && <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">Best Value</span>}
-                    <p className="text-2xl font-bold text-secondary w-20 text-right">{p.price}</p>
+                  <div className="flex items-center justify-between sm:justify-end gap-4">
+                    {p.best && <span className="hidden sm:inline text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">Best Value</span>}
+                    <p className="text-2xl font-bold text-secondary">{p.price}</p>
                     <a href={BOOK_URL} target="_blank" rel="noopener noreferrer"
-                      className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all hover:shadow-md">
+                      className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-md">
                       Buy
                     </a>
                   </div>
@@ -84,16 +87,19 @@ export default function PricingPage() {
                 { label: "16 classes/month", price: "$249", per: "$15.56/class" },
                 { label: "Unlimited", price: "$329", per: "Best value" },
               ].map((m, i) => (
-                <div key={m.label} className={`flex items-center justify-between px-6 py-5 ${i > 0 ? "border-t border-gray-100" : ""} ${m.best ? "bg-primary/5" : ""}`}>
-                  <div>
-                    <p className="font-semibold text-secondary">{m.label}</p>
-                    <p className="text-sm text-muted">{m.per}</p>
+                <div key={m.label} className={`flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 py-4 sm:py-5 gap-3 sm:gap-0 ${i > 0 ? "border-t border-gray-100" : ""} ${m.best ? "bg-primary/5" : ""}`}>
+                  <div className="flex items-center justify-between sm:block">
+                    <div>
+                      <p className="font-semibold text-secondary">{m.label}</p>
+                      <p className="text-sm text-muted">{m.per}</p>
+                    </div>
+                    {m.best && <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full sm:hidden">Popular</span>}
                   </div>
-                  <div className="flex items-center gap-4">
-                    {m.best && <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">Popular</span>}
-                    <p className="text-2xl font-bold text-secondary w-20 text-right">{m.price}</p>
+                  <div className="flex items-center justify-between sm:justify-end gap-4">
+                    {m.best && <span className="hidden sm:inline text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">Popular</span>}
+                    <p className="text-2xl font-bold text-secondary">{m.price}</p>
                     <a href={BOOK_URL} target="_blank" rel="noopener noreferrer"
-                      className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all hover:shadow-md">
+                      className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-md">
                       Join
                     </a>
                   </div>
@@ -111,15 +117,15 @@ export default function PricingPage() {
                 { label: "Certified Instructor", price: "$95", desc: "Personalized to your goals" },
                 { label: "Master Instructor", price: "$110", desc: "Our most experienced instructors" },
               ].map((s, i) => (
-                <div key={s.label} className={`flex items-center justify-between px-6 py-5 ${i > 0 ? "border-t border-gray-100" : ""} ${s.best ? "bg-primary/5" : ""}`}>
+                <div key={s.label} className={`flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 py-4 sm:py-5 gap-3 sm:gap-0 ${i > 0 ? "border-t border-gray-100" : ""} ${s.best ? "bg-primary/5" : ""}`}>
                   <div>
                     <p className="font-semibold text-secondary">{s.label}</p>
                     <p className="text-sm text-muted">{s.desc}</p>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <p className="text-2xl font-bold text-secondary w-20 text-right">{s.price}</p>
+                  <div className="flex items-center justify-between sm:justify-end gap-4">
+                    <p className="text-2xl font-bold text-secondary">{s.price}</p>
                     <a href={BOOK_URL} target="_blank" rel="noopener noreferrer"
-                      className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all hover:shadow-md">
+                      className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-md">
                       Book
                     </a>
                   </div>

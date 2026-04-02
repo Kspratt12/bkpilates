@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const heroImages = ["/1st.webp", "/mainhero2.webp", "/mainhero3.webp"];
+const heroImages = ["/mainhero2.webp", "/mainhero3.webp", "/1st.webp"];
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
@@ -46,7 +46,7 @@ export default function HeroCarousel() {
           <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4 animate-fade-in-up">
             Welcome to BK Pilates Raleigh
           </p>
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up animation-delay-200">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up animation-delay-200">
             Move with
             <br />
             <span className="text-primary">intention.</span>

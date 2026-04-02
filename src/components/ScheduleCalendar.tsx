@@ -115,14 +115,14 @@ export default function ScheduleCalendar() {
       <div className="flex items-center justify-between mb-6">
         <button
           onClick={() => setWeekOffset((w) => w - 1)}
-          className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all"
+          className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all flex-shrink-0"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <div className="text-center">
-          <h3 className="text-xl font-bold text-secondary">{weekLabel}</h3>
+          <h3 className="text-base sm:text-xl font-bold text-secondary">{weekLabel}</h3>
           {weekOffset !== 0 && (
             <button
               onClick={() => { setWeekOffset(0); setSelectedDate(new Date()); }}
@@ -134,7 +134,7 @@ export default function ScheduleCalendar() {
         </div>
         <button
           onClick={() => setWeekOffset((w) => w + 1)}
-          className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all"
+          className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all flex-shrink-0"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -143,7 +143,7 @@ export default function ScheduleCalendar() {
       </div>
 
       {/* Calendar Grid */}
-      <div className="grid grid-cols-7 gap-2 mb-8">
+      <div className="grid grid-cols-7 gap-1 sm:gap-2 mb-8">
         {weekDates.map((date, i) => {
           const selected = isSameDay(date, selectedDate);
           const today = isToday(date);
@@ -152,7 +152,7 @@ export default function ScheduleCalendar() {
             <button
               key={i}
               onClick={() => setSelectedDate(new Date(date))}
-              className={`relative rounded-2xl p-4 text-center transition-all duration-200 ${
+              className={`relative rounded-xl sm:rounded-2xl p-2 sm:p-4 text-center transition-all duration-200 ${
                 selected
                   ? "bg-primary text-white shadow-lg scale-105"
                   : today
@@ -165,7 +165,7 @@ export default function ScheduleCalendar() {
               }`}>
                 {SHORT_DAYS[date.getDay()]}
               </p>
-              <p className={`text-2xl font-bold mb-1 ${selected ? "text-white" : ""}`}>
+              <p className={`text-lg sm:text-2xl font-bold mb-1 ${selected ? "text-white" : ""}`}>
                 {date.getDate()}
               </p>
               <p className={`text-[10px] ${selected ? "text-white/70" : "text-muted"}`}>
@@ -201,7 +201,7 @@ export default function ScheduleCalendar() {
             </div>
           ) : (
             classes.map((cls, i) => (
-              <div key={i} className="flex items-center justify-between px-6 py-4 hover:bg-primary/5 transition-colors group">
+              <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 py-4 hover:bg-primary/5 transition-colors group gap-3 sm:gap-0">
                 <div className="flex items-center gap-4">
                   <div className="w-20 text-center bg-background group-hover:bg-primary/10 rounded-xl py-2 transition-colors">
                     <p className="font-bold text-secondary text-sm">{cls.time}</p>

@@ -209,7 +209,7 @@ export default function Chatbot() {
               <button
                 key={q}
                 onClick={() => handleSend(q)}
-                className="flex-shrink-0 text-xs px-3 py-1.5 bg-background text-muted rounded-full hover:bg-primary hover:text-white transition-all"
+                className="flex-shrink-0 text-xs px-3 py-2.5 bg-background text-muted rounded-full hover:bg-primary hover:text-white transition-all"
               >
                 {q}
               </button>

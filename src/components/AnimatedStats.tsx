@@ -61,7 +61,7 @@ function StatItem({ target, label }: { target: string; label: string }) {
   const { ref, value } = useCountUp(target);
   return (
     <div ref={ref}>
-      <p className="text-4xl md:text-5xl font-bold text-primary mb-2">{value}</p>
+      <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-2">{value}</p>
       <p className="text-gray-400 text-sm uppercase tracking-wider">{label}</p>
     </div>
   );

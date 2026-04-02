@@ -139,14 +139,14 @@ export default function Home() {
         <div className="relative">
           <div className="flex gap-2 mb-2 animate-marquee-left">
             {[1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8].map((num, i) => (
-              <div key={`row1-${i}`} className="flex-shrink-0 w-[220px] h-[300px] rounded-lg overflow-hidden">
+              <div key={`row1-${i}`} className="flex-shrink-0 w-[160px] sm:w-[220px] h-[220px] sm:h-[300px] rounded-lg overflow-hidden">
                 <Image src={`/vertical${num}.png`} alt={`Studio photo ${num}`} width={220} height={300} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             ))}
           </div>
           <div className="flex gap-2 animate-marquee-right">
             {[9, 10, 11, 12, 13, 14, 15, 9, 10, 11, 12, 13, 14, 15].map((num, i) => (
-              <div key={`row2-${i}`} className="flex-shrink-0 w-[220px] h-[300px] rounded-lg overflow-hidden">
+              <div key={`row2-${i}`} className="flex-shrink-0 w-[160px] sm:w-[220px] h-[220px] sm:h-[300px] rounded-lg overflow-hidden">
                 <Image src={`/vertical${num}.png`} alt={`Studio photo ${num}`} width={220} height={300} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             ))}
