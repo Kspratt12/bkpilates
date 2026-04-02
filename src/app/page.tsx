@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import HeroCarousel from "@/components/HeroCarousel";
+import ScheduleCalendar from "@/components/ScheduleCalendar";
 
 export default function Home() {
   return (
@@ -286,7 +287,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Schedule Section */}
+      {/* Schedule Calendar Section */}
       <section className="py-24 bg-white" id="schedule">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -297,48 +298,11 @@ export default function Home() {
               Class Schedule
             </h2>
             <p className="text-muted max-w-xl mx-auto">
-              View available classes and book your spot directly. Classes fill up quickly!
+              Pick a date to see classes. Book your spot directly!
             </p>
           </div>
 
-          <div className="bg-background rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <div className="p-8 md:p-12 text-center">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-secondary mb-4">
-                View Full Schedule & Book Online
-              </h3>
-              <p className="text-muted mb-8 max-w-md mx-auto">
-                Click below to view our real-time class schedule and reserve your spot through Mindbody.
-              </p>
-              <a
-                href="https://clients.mindbodyonline.com/classic/ws?studioid=5741803"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
-              >
-                View Schedule & Book Now
-              </a>
-            </div>
-          </div>
-
-          {/* Class Types */}
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            {[
-              { title: "Group Reformer", time: "Various times daily", level: "All Levels" },
-              { title: "Private Sessions", time: "By appointment", level: "All Levels" },
-              { title: "Duet Sessions", time: "By appointment", level: "All Levels" },
-            ].map((c) => (
-              <div key={c.title} className="bg-background rounded-xl p-6 border border-gray-100">
-                <span className="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">{c.level}</span>
-                <h4 className="font-bold text-secondary mb-1">{c.title}</h4>
-                <p className="text-primary text-sm">{c.time}</p>
-              </div>
-            ))}
-          </div>
+          <ScheduleCalendar />
         </div>
       </section>
 
