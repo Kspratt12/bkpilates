@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: "Location & Parking | BK Pilates Raleigh",
   description:
     "Find BK Pilates Raleigh at 1019 S. Saunders Street inside The Row. Free 2-hour parking available.",
+  openGraph: {
+    title: "Location & Parking | BK Pilates Raleigh",
+    description: "1019 S. Saunders Street, Raleigh, NC 27603. Inside The Row with free 2-hour parking.",
+  },
 };
 
 export default function LocationPage() {

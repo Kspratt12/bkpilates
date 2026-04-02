@@ -3,7 +3,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Pricing | BK Pilates Raleigh",
   description:
-    "Flexible pricing options for group classes, private sessions, and memberships at BK Pilates Raleigh.",
+    "Flexible pricing options for group classes, private sessions, and memberships at BK Pilates Raleigh. First class just $29.",
+  openGraph: {
+    title: "Pricing | BK Pilates Raleigh",
+    description: "Group classes from $29, memberships from $99/month, private sessions from $85. Flexible options for every budget.",
+  },
 };
 
 export default function PricingPage() {

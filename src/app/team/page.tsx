@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Our Team | BK Pilates Raleigh",
   description:
     "Meet the founders and instructors of BK Pilates Raleigh. Led by Marina Kaydanova and Julia Davis.",
+  openGraph: {
+    title: "Our Team | BK Pilates Raleigh",
+    description: "Meet Marina Kaydanova and Julia Davis, the founders bringing mind-body connection to Raleigh.",
+  },
 };
 
 export default function TeamPage() {

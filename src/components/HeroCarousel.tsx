@@ -31,10 +31,9 @@ export default function HeroCarousel() {
             alt={`BK Pilates Raleigh Studio ${i + 1}`}
             fill
             className="object-cover"
-            priority={i === 0}
+            priority
             quality={100}
             sizes="100vw"
-            unoptimized
           />
         </div>
       ))}

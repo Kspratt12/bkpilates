@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: "Mission & Values | BK Pilates Raleigh",
   description:
     "Our mission is to empower clients through small, sustainable changes. Body positivity and holistic health at the core.",
+  openGraph: {
+    title: "Mission & Values | BK Pilates Raleigh",
+    description: "Empowering clients through sustainable changes, body positivity, and holistic health.",
+  },
 };
 
 export default function MissionPage() {
