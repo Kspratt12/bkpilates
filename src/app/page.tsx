@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import HeroCarousel from "@/components/HeroCarousel";
 import ScheduleCalendar from "@/components/ScheduleCalendar";
+import HomeFAQ from "@/components/HomeFAQ";
 
 export default function Home() {
   return (
@@ -299,6 +300,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <HomeFAQ />
 
       {/* Location Images Section */}
       <section className="py-24 bg-white">
