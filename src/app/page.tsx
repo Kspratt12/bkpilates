@@ -157,132 +157,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section on Homepage */}
+      {/* Pricing Section - simplified */}
       <section className="py-24 bg-background" id="pricing">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
             <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
-              Transparent Pricing
+              Simple Pricing
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-              Simple, Flexible Pricing
+              Flexible Options for Everyone
             </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              From your first class to an unlimited membership, we have an option for every budget and schedule.
-            </p>
           </div>
 
-          {/* New Client Highlight */}
-          <div className="bg-primary rounded-2xl p-8 md:p-10 text-center mb-12">
-            <p className="text-white/80 uppercase tracking-widest text-xs font-semibold mb-2">New Client Special</p>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">Your First Class - Just $29</h3>
-            <p className="text-white/70 mb-6">Or try 3 classes for $85. No commitment, no pressure.</p>
+          {/* New Client */}
+          <div className="bg-primary rounded-2xl p-8 md:p-10 text-center mb-10">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">First Class - Just $29</h3>
+            <p className="text-white/70 mb-6">No commitment, no pressure. Just come try it.</p>
             <a
               href="https://clients.mindbodyonline.com/classic/ws?studioid=5741803"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-white text-primary-dark px-8 py-3.5 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 hover:shadow-lg"
+              className="inline-block bg-white text-primary-dark px-8 py-3.5 rounded-full font-semibold hover:bg-gray-100 transition-all hover:shadow-lg"
             >
               Book Your Intro Class
             </a>
           </div>
 
-          {/* Class Packs */}
-          <h3 className="text-xl font-bold text-secondary mb-6 text-center">Class Packs</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {[
-              { classes: "1", price: "$39", perClass: "$39", label: "Single Class" },
-              { classes: "5", price: "$170", perClass: "$34", label: "5 Class Pack" },
-              { classes: "10", price: "$330", perClass: "$33", label: "10 Class Pack", popular: true },
-              { classes: "20", price: "$600", perClass: "$30", label: "20 Class Pack" },
-            ].map((pack) => (
-              <div
-                key={pack.classes}
-                className={`relative rounded-2xl p-8 text-center border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                  pack.popular
-                    ? "bg-secondary text-white border-secondary shadow-xl scale-105"
-                    : "bg-white border-gray-100"
-                }`}
-              >
-                {pack.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
-                    Best Value
-                  </div>
-                )}
-                <p className="text-primary text-sm font-medium uppercase tracking-wider mb-4">{pack.label}</p>
-                <p className={`text-4xl font-bold mb-2 ${pack.popular ? "text-white" : "text-secondary"}`}>{pack.price}</p>
-                <p className={`text-sm mb-6 ${pack.popular ? "text-gray-300" : "text-muted"}`}>{pack.perClass} per class</p>
-              </div>
-            ))}
+          {/* Quick overview */}
+          <div className="grid sm:grid-cols-3 gap-5 mb-10">
+            <div className="bg-white rounded-2xl p-6 text-center border border-gray-100">
+              <p className="text-muted text-sm mb-2">Class Packs</p>
+              <p className="text-3xl font-bold text-secondary">$30-$39</p>
+              <p className="text-xs text-muted mt-1">per class</p>
+            </div>
+            <div className="bg-secondary rounded-2xl p-6 text-center text-white">
+              <p className="text-primary text-sm font-medium mb-2">Memberships</p>
+              <p className="text-3xl font-bold">$99-$329</p>
+              <p className="text-xs text-gray-400 mt-1">per month</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 text-center border border-gray-100">
+              <p className="text-muted text-sm mb-2">Private Sessions</p>
+              <p className="text-3xl font-bold text-secondary">$85-$110</p>
+              <p className="text-xs text-muted mt-1">per session</p>
+            </div>
           </div>
 
-          {/* Memberships */}
-          <h3 className="text-xl font-bold text-secondary mb-6 text-center">Monthly Memberships</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
-            {[
-              { classes: "4", price: "$99", perClass: "$24.75" },
-              { classes: "8", price: "$179", perClass: "$22.38", popular: true },
-              { classes: "12", price: "$209", perClass: "$17.42" },
-              { classes: "16", price: "$249", perClass: "$15.56" },
-              { classes: "Unlimited", price: "$329", perClass: "Best value" },
-            ].map((m) => (
-              <div
-                key={m.classes}
-                className={`rounded-2xl p-6 text-center border transition-all duration-300 hover:shadow-lg ${
-                  m.popular ? "bg-secondary text-white border-secondary shadow-lg" : "bg-white border-gray-100"
-                }`}
-              >
-                {m.popular && <div className="text-primary text-xs font-bold uppercase tracking-wider mb-2">Most Popular</div>}
-                <p className={`text-3xl font-bold mb-1 ${m.popular ? "text-white" : "text-secondary"}`}>{m.classes}</p>
-                <p className={`text-xs uppercase tracking-wider mb-4 ${m.popular ? "text-gray-300" : "text-muted"}`}>
-                  {m.classes === "Unlimited" ? "classes" : "classes / month"}
-                </p>
-                <p className="text-2xl font-bold text-primary mb-1">{m.price}</p>
-                <p className={`text-xs ${m.popular ? "text-gray-400" : "text-muted"}`}>
-                  {m.perClass}{m.classes !== "Unlimited" ? " / class" : ""}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Private Sessions */}
-          <h3 className="text-xl font-bold text-secondary mb-6 text-center">Private Sessions</h3>
-          <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto mb-8">
-            {[
-              { title: "Intro Private", price: "$85", popular: true },
-              { title: "Certified Instructor", price: "$95" },
-              { title: "Master Instructor", price: "$110" },
-            ].map((s) => (
-              <div
-                key={s.title}
-                className={`rounded-2xl p-6 text-center border transition-all duration-300 hover:shadow-lg ${
-                  s.popular ? "bg-secondary text-white border-secondary" : "bg-white border-gray-100"
-                }`}
-              >
-                {s.popular && <div className="text-primary text-xs font-bold uppercase tracking-wider mb-2">Popular</div>}
-                <h4 className={`font-bold mb-2 ${s.popular ? "text-white" : "text-secondary"}`}>{s.title}</h4>
-                <p className="text-3xl font-bold text-primary">{s.price}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Camp Pilates */}
-          <div className="bg-accent rounded-2xl p-8 text-center max-w-md mx-auto">
-            <p className="text-primary-dark font-medium tracking-widest uppercase text-xs mb-2">Try It All</p>
-            <h4 className="text-xl font-bold text-secondary mb-1">Camp Pilates</h4>
-            <p className="text-muted text-sm mb-2">Unlimited classes for one full week</p>
-            <p className="text-3xl font-bold text-primary">$79</p>
-          </div>
-
-          <div className="text-center mt-10">
-            <a
-              href="https://clients.mindbodyonline.com/classic/ws?studioid=5741803"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
+          <div className="text-center">
+            <Link
+              href="/pricing"
+              className="inline-block bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-full font-semibold transition-all hover:shadow-lg"
             >
-              Book a Session
-            </a>
+              View All Pricing Details
+            </Link>
           </div>
         </div>
       </section>
