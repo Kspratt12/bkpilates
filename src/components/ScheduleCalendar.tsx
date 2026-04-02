@@ -209,7 +209,7 @@ export default function ScheduleCalendar() {
                   <div className="w-1 h-8 bg-primary/20 rounded-full group-hover:bg-primary/40 transition-colors" />
                   <div>
                     <p className="font-semibold text-secondary">{cls.name}</p>
-                    <p className="text-sm text-muted">with {cls.instructor}</p>
+                    <p className="text-sm text-muted">with {cls.instructor} - 50 min</p>
                   </div>
                 </div>
                 <a

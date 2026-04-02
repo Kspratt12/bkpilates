@@ -74,7 +74,7 @@ export default function TeamPage() {
                 <p className="text-muted leading-relaxed">
                   Years later, Julia took Marina up on the offer when she moved
                   back to Raleigh. They are thrilled to bring mind-body connection
-                  to Raleigh at their first location in Rockway.
+                  to Raleigh at their studio in The Row on S. Saunders Street.
                 </p>
               </div>
             </div>

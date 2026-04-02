@@ -237,10 +237,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: "2012", label: "Founded" },
-              { value: "1000+", label: "Happy Clients" },
-              { value: "50+", label: "Classes Weekly" },
-              { value: "4.9", label: "Google Rating" },
+              { value: "2024", label: "Est. Raleigh" },
+              { value: "50 min", label: "Per Class" },
+              { value: "30+", label: "Classes Weekly" },
+              { value: "7 days", label: "Open Weekly" },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</p>

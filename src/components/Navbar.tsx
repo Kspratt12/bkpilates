@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/schedule", label: "Schedule" },
   { href: "/contact", label: "Contact" },
   { href: "/location", label: "Location" },
+  { href: "/faq", label: "FAQ" },
 ];
 
 export default function Navbar() {
